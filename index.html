@@ -1,6 +1,3 @@
-Here is the full index.html code:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,6 +163,29 @@ Here is the full index.html code:
             background-color: #2b3d36;
         }
 
+        /* RSVP Link Button */
+        .rsvp-link-btn {
+            display: inline-block;
+            background-color: var(--forest-green);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-sizing: border-box;
+            margin: 0.5rem 0 1.2rem 0;
+        }
+
+        .rsvp-link-btn:hover {
+            background-color: #2b3d36;
+        }
+
         /* RSVP List */
         .rsvp-list {
             margin-top: 1.5rem;
@@ -295,24 +315,7 @@ Here is the full index.html code:
                 <!-- RSVP Section -->
                 <div class="card" style="margin-bottom: 2rem;">
                     <h2>RSVP Sign-Up</h2>
-                    <form id="rsvpForm">
-                        <label for="guestName">Your Name(s):</label>
-                        <input type="text" id="guestName" placeholder="e.g., Uncle Bob & Aunt Sue" required>
-                        
-                        <label for="guestCount">How many in your party?</label>
-                        <select id="guestCount">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5+">5+ </option>
-                        </select>
-                        
-                        <button type="submit">Count Us In!</button>
-                    </form>
-
-                    <h3>Who's Coming So Far:</h3>
-                    <div class="rsvp-list" id="rsvpList"></div>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScBSvcDJO87GMbwgh5qhblb_RBxYO0M-mHzbxce21oaGaeOvA/viewform?usp=publish-editor" target="_blank" class="rsvp-link-btn">Click To RSVP</a>
                 </div>
 
                 <!-- Location / Map Section -->
@@ -387,25 +390,6 @@ Here is the full index.html code:
             }
         }, 1000);
 
-        // Simulated RSVP Form Processing
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nameInput = document.getElementById('guestName');
-            const countInput = document.getElementById('guestCount');
-            
-            if(nameInput.value.trim() !== "") {
-                const newGuest = document.createElement('span');
-                newGuest.className = 'guest-tag';
-                newGuest.innerText = `${nameInput.value} (${countInput.value})`;
-                
-                document.getElementById('rsvpList').appendChild(newGuest);
-                
-                // Reset form
-                nameInput.value = "";
-                countInput.value = "1";
-            }
-        });
-
         // Simulated Activity Sign-Up Processing
         document.getElementById('activityForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -441,4 +425,3 @@ Here is the full index.html code:
     </script>
 </body>
 </html>
-```
