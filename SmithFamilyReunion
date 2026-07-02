@@ -340,14 +340,8 @@
 
                 <div class="card activity-card">
                     <h2><a href="https://docs.google.com/forms/d/e/1FAIpQLSdLsaclzSjfQWIJL-O9a6lymBlpJss3Y-MCP2DlbJarw-4F1g/viewform?usp=publish-editor" target="_blank" rel="noopener">Activity Sign-Up</a></h2>
-                    <p>Type in an activity you want to join, then add your name.</p>
-                    <form id="activityForm">
-                        <label for="activityName">Activity</label>
-                        <input type="text" id="activityName" placeholder="e.g., Campfire Storytelling" required>
-                        <label for="participantName">Your Name</label>
-                        <input type="text" id="participantName" placeholder="e.g., Aunt May" required>
-                        <button type="submit">Join Activity</button>
-                    </form>
+                    <p>Sign up for activities using the Google Form linked below:</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdLsaclzSjfQWIJL-O9a6lymBlpJss3Y-MCP2DlbJarw-4F1g/viewform?usp=publish-editor" target="_blank" rel="noopener" class="map-btn">📝 Open Activity Sign-Up Form</a>
                     <h3>Signed Up So Far:</h3>
                     <div class="activity-list" id="activityList"></div>
                 </div>
@@ -400,24 +394,6 @@
                 // Reset form
                 nameInput.value = "";
                 countInput.value = "1";
-            }
-        });
-
-        // Simulated Activity Sign-Up Processing
-        document.getElementById('activityForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const activityInput = document.getElementById('activityName');
-            const participantInput = document.getElementById('participantName');
-
-            if (participantInput.value.trim() !== "") {
-                const activityItem = document.createElement('span');
-                activityItem.className = 'activity-tag';
-                activityItem.innerText = `${participantInput.value} → ${activityInput.value}`;
-
-                document.getElementById('activityList').appendChild(activityItem);
-
-                participantInput.value = "";
-                activityInput.value = "";
             }
         });
 
