@@ -1,6 +1,3 @@
-Here is the full index.html code:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -342,7 +339,7 @@ Here is the full index.html code:
                 </div>
 
                 <div class="card activity-card">
-                    <h2>Activity Sign-Up</h2>
+                    <h2><a href="https://docs.google.com/forms/d/e/1FAIpQLSdLsaclzSjfQWIJL-O9a6lymBlpJss3Y-MCP2DlbJarw-4F1g/viewform?usp=publish-editor" target="_blank" rel="noopener">Activity Sign-Up</a></h2>
                     <p>Type in an activity you want to join, then add your name.</p>
                     <form id="activityForm">
                         <label for="activityName">Activity</label>
@@ -441,4 +438,3 @@ Here is the full index.html code:
     </script>
 </body>
 </html>
-```
