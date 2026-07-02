@@ -1,442 +1,444 @@
+Here is the full index.html code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wynne Family Reunion 2026</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Smith Family Reunion</title>
     <style>
-        /* --- Country Theme Styling --- */
+        /* Country Style Palette & Typography */
+        @import url('https://fonts.googleapis.com/css2?family=Cherry+Cream+Soda&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap');
+
         :root {
-            --wood-dark: #4a2c11;
-            --wood-light: #f5f0ea;
-            --denim-blue: #3b5998;
-            --accent-warm: #d97724;
-            --text-dark: #333333;
+            --barn-red: #8B263E;
+            --header-blue: #2B7BE4;
+            --countdown-blue: #C0C0C0;
+            --warm-cream: #FDFBF7;
+            --burlap-brown: #D4C5B9;
+            --dark-wood: #4A3525;
+            --forest-green: #3B5249;
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background-color: var(--wood-light);
-            color: var(--text-dark);
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--warm-cream);
+            color: var(--dark-wood);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            background-image: radial-gradient(rgba(74, 53, 37, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
         }
 
         header {
-            background: linear-gradient(rgba(74, 44, 17, 0.8), rgba(74, 44, 17, 0.8)),
-                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200')
-                no-repeat center center/cover;
-            color: white;
+            background-color: var(--header-blue);
+            color: var(--warm-cream);
             text-align: center;
-            padding: 60px 20px;
-            border-bottom: 8px solid var(--accent-warm);
+            padding: 3rem 1rem;
+            border-bottom: 8px double var(--dark-wood);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            font-size: 3rem;
-            margin: 0 0 10px 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            font-family: 'Cherry Cream Soda', cursive;
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px var(--dark-wood);
         }
 
         header p {
-            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
             font-style: italic;
-            margin: 0;
+            font-size: 1.5rem;
+            margin: 0.5rem 0 0 0;
         }
 
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
 
-        .section {
-            background: white;
-            padding: 30px;
-            margin-bottom: 40px;
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* Card Styling */
+        .card {
+            background: #ffffff;
+            border: 2px solid var(--burlap-brown);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .activity-card {
+            background: #f2f2f2;
+            border-color: #4a4a4a;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px dashed var(--burlap-brown);
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border-left: 5px solid var(--denim-blue);
+            pointer-events: none;
         }
 
         h2 {
-            color: var(--wood-dark);
-            border-bottom: 2px dashed #ccc;
-            padding-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            color: var(--barn-red);
+            border-bottom: 2px dashed var(--burlap-brown);
+            padding-bottom: 0.5rem;
             margin-top: 0;
         }
 
-        /* --- Countdown Styling --- */
-        #countdown {
+        /* Countdown Timer */
+        #countdown-box {
+            text-align: center;
+            background: var(--countdown-blue);
+            color: var(--warm-cream);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        #countdown-box h3 {
+            margin: 0 0 1rem 0;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+
+        #timer {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 1.2rem;
         }
 
-        .time-box {
-            background: var(--wood-dark);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 6px;
-            text-align: center;
-            min-width: 80px;
+        .time-part {
+            display: flex;
+            flex-direction: column;
         }
 
-        .time-box span {
-            display: block;
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--accent-warm);
+        .time-part span:first-child {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            font-family: 'Cherry Cream Soda', cursive;
         }
 
-        /* --- Form & Upload Styling --- */
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: var(--wood-dark);
-        }
-
-        input[type="text"], input[type="number"], select {
+        /* Forms & Interactive elements */
+        input, select, button {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 0.8rem;
+            margin: 0.5rem 0 1.2rem 0;
+            border: 1px solid var(--burlap-brown);
+            border-radius: 6px;
             box-sizing: border-box;
             font-family: inherit;
         }
 
-        .btn {
-            background-color: var(--denim-blue);
+        button {
+            background-color: var(--forest-green);
             color: white;
-            padding: 12px 20px;
+            font-weight: bold;
             border: none;
-            border-radius: 4px;
             cursor: pointer;
-            font-size: 1rem;
-            font-family: inherit;
             transition: background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn:hover {
-            background-color: var(--wood-dark);
+        button:hover {
+            background-color: #2b3d36;
         }
 
-        /* --- Photo Upload Section --- */
+        /* RSVP List */
+        .rsvp-list {
+            margin-top: 1.5rem;
+            max-height: 250px;
+            overflow-y: auto;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .guest-tag {
+            display: inline-block;
+            background: var(--burlap-brown);
+            color: var(--dark-wood);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Photo Gallery Frame */
         .upload-zone {
-            border: 3px dashed var(--accent-warm);
-            padding: 30px;
+            border: 3px dashed var(--burlap-brown);
+            padding: 2rem;
             text-align: center;
-            background: #fffdfa;
-            border-radius: 6px;
+            background: var(--warm-cream);
+            border-radius: 8px;
             cursor: pointer;
-            user-select: none;
         }
 
-        .upload-zone.dragover {
-            background: #fff6e6;
-            border-color: var(--denim-blue);
-        }
-
-        .gallery-preview {
+        .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 100px));
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 10px;
-            margin-top: 15px;
+            margin-top: 1rem;
         }
 
-        .gallery-preview img {
+        .activity-list {
+            margin-top: 1rem;
+            max-height: 180px;
+            overflow-y: auto;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .activity-tag {
+            display: block;
+            background: #eef6ff;
+            color: #1a3b70;
+            padding: 0.65rem 0.9rem;
+            border-radius: 12px;
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .gallery img {
             width: 100%;
             height: 100px;
             object-fit: cover;
-            border-radius: 4px;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 4px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            transform: rotate(calc(var(--r, 0) * 1deg));
         }
 
-        .signup-list {
-            margin-top: 15px;
-            border-top: 1px dashed #ddd;
-            padding-top: 10px;
+        /* Map Card style */
+        .map-link-card {
+            text-align: center;
+            background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1524813686514-a57563d77d61?auto=format&fit=crop&w=400&q=80');
+            background-size: cover;
         }
-
-        .signup-item {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
+        
+        .map-btn {
+            display: inline-block;
+            background-color: #2B7BE4;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+            box-shadow: 0 4px var(--dark-wood);
+            transition: background 0.2s ease;
+        }
+        .map-btn:hover {
+            background-color: #1d63c0;
+        }
+        .map-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px var(--dark-wood);
         }
 
         footer {
             text-align: center;
-            padding: 30px;
-            background-color: var(--wood-dark);
-            color: white;
+            padding: 2rem;
+            color: var(--dark-wood);
             font-size: 0.9rem;
-        }
-
-        .muted {
-            color: #666;
-            font-size: 0.9rem;
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>The Family Reunion</h1>
-        <p>Gearing up for good food, great stories, and country skies</p>
+        <h1>The Smith Family Reunion</h1>
+        <p>Gathering together, making memories</p>
     </header>
 
     <div class="container">
-
-        <!-- Countdown Timer Section -->
-        <div class="section" style="text-align: center;">
-            <h2>Counting Down the Days</h2>
-            <div id="countdown" aria-live="polite">
-                <div class="time-box"><span id="days">00</span>Days</div>
-                <div class="time-box"><span id="hours">00</span>Hours</div>
-                <div class="time-box"><span id="minutes">00</span>Minutes</div>
-                <div class="time-box"><span id="seconds">00</span>Seconds</div>
+        
+        <!-- Countdown Timer -->
+        <div id="countdown-box">
+            <h3>Time Left Until the Fun and Singing begins!</h3>
+            <div id="timer">
+                <div class="time-part"><span id="days">00</span><span>Days</span></div>
+                <div class="time-part"><span id="hours">00</span><span>Hours</span></div>
+                <div class="time-part"><span id="minutes">00</span><span>Mins</span></div>
+                <div class="time-part"><span id="seconds">00</span><span>Secs</span></div>
             </div>
-            <p id="countdown-message" class="muted" style="margin-top:10px;"></p>
         </div>
 
-        <!-- RSVP & Sign Up Sheet -->
-        <div class="section">
-            <h2>Potluck & Attendance Sign-Up</h2>
-            <form id="signup-form" onsubmit="handleSignUp(event)">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" required placeholder="First and Last Name" />
-                </div>
-                <div class="form-group">
-                    <label for="guests">Number of Guests (Including Yourself)</label>
-                    <input type="number" id="guests" min="1" required value="1" />
-                </div>
-                <div class="form-group">
-                    <label for="bringing">What are you bringing to the table?</label>
-                    <select id="bringing">
-                        <option value="Main Dish">Main Dish (Smoked meats, main courses)</option>
-                        <option value="Side Dish">Side Dish (Salads, mac & cheese, etc.)</option>
-                        <option value="Dessert">Dessert (Pies, cakes, cookies)</option>
-                        <option value="Drinks/Ice">Drinks & Ice</option>
-                        <option value="Just Myself">Just my wonderful self!</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn">Count Me In!</button>
-            </form>
+        <div class="grid">
+            
+            <!-- Left Column: RSVP and Map -->
+            <div class="left-col">
+                
+                <!-- RSVP Section -->
+                <div class="card" style="margin-bottom: 2rem;">
+                    <h2>RSVP Sign-Up</h2>
+                    <form id="rsvpForm">
+                        <label for="guestName">Your Name(s):</label>
+                        <input type="text" id="guestName" placeholder="e.g., Uncle Bob & Aunt Sue" required>
+                        
+                        <label for="guestCount">How many in your party?</label>
+                        <select id="guestCount">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5+">5+ </option>
+                        </select>
+                        
+                        <button type="submit">Count Us In!</button>
+                    </form>
 
-            <div class="signup-list" id="signup-list" aria-live="polite"></div>
-        </div>
+                    <h3>Who's Coming So Far:</h3>
+                    <div class="rsvp-list" id="rsvpList"></div>
+                </div>
 
-        <!-- Memory Lane Photo Upload -->
-        <div class="section">
-            <h2>Memory Lane Photo Sharing</h2>
-            <p>Upload your favorite vintage family photos or snapshots from past years to share on the big screen!</p>
-            <div id="upload-zone" class="upload-zone" tabindex="0" role="button" aria-label="Upload family photos">
-                <p>📸 Click or drop family photos here to select</p>
-                <input type="file" id="photo-input" multiple accept="image/*" style="display: none;" />
+                <!-- Location / Map Section -->
+                <div class="card map-link-card">
+                    <h2>Reunion Grounds</h2>
+                    <p>We're setting up the tents and stoking the grills! View our exact location and get directions here:</p>
+                    <a href="https://maps.app.goo.gl/4jY31GRJw6uv2RtR6" target="_blank" class="map-btn">📍 Open Map Location</a>
+                </div>
+
             </div>
-            <div class="gallery-preview" id="gallery-preview" aria-live="polite"></div>
-        </div>
 
+            <!-- Right Column: Photo Upload -->
+            <div class="right-col">
+                <div class="card" style="height: calc(100% - 4rem);">
+                    <h2>Family Scrapbook</h2>
+                    <p>Share your favorite memories or throwbacks leading up to the big day!</p>
+                    
+                    <div class="upload-zone" onclick="window.open('https://photos.app.goo.gl/tYFgSS7VXsfEtD7bA','_blank')">
+                        <p>📸 Click to share a family photo (opens Google Photos)</p>
+                    </div>
+
+                    <div class="gallery" id="gallery">
+                        <!-- Placeholder country imagery -->
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=150&q=80" style="--r: -3">
+                        <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?auto=format&fit=crop&w=150&q=80" style="--r: 4">
+                    </div>
+                </div>
+
+                <div class="card activity-card">
+                    <h2>Activity Sign-Up</h2>
+                    <p>Type in an activity you want to join, then add your name.</p>
+                    <form id="activityForm">
+                        <label for="activityName">Activity</label>
+                        <input type="text" id="activityName" placeholder="e.g., Campfire Storytelling" required>
+                        <label for="participantName">Your Name</label>
+                        <input type="text" id="participantName" placeholder="e.g., Aunt May" required>
+                        <button type="submit">Join Activity</button>
+                    </form>
+                    <h3>Signed Up So Far:</h3>
+                    <div class="activity-list" id="activityList"></div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <footer>
-        <p>Rooted in History, Growing in Love • Family Reunion 2026</p>
+        <p>The Smith Family Reunion © 2026 • See you there! </p>
     </footer>
 
-    <!-- --- JavaScript Functionality --- -->
     <script>
-        // --- Countdown Timer Setup ---
-        // Target Date: July 9th, 2026 at 3:00 PM (15:00)
+        // Countdown Timer Logic
         const targetDate = new Date("July 9, 2026 15:00:00").getTime();
-        const daysEl = document.getElementById('days');
-        const hoursEl = document.getElementById('hours');
-        const minutesEl = document.getElementById('minutes');
-        const secondsEl = document.getElementById('seconds');
-        const messageEl = document.getElementById('countdown-message');
 
-        function pad(val) {
-            return String(val).padStart(2, '0');
-        }
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
 
-        function updateCountdown() {
-            const now = Date.now();
-            const distance = targetDate - now;
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            if (distance <= 0) {
+            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+
+            if (difference < 0) {
                 clearInterval(timerInterval);
-                daysEl.textContent = '00';
-                hoursEl.textContent = '00';
-                minutesEl.textContent = '00';
-                secondsEl.textContent = '00';
-                messageEl.textContent = "We're here — enjoy the reunion!";
-                return;
+                document.getElementById("countdown-box").innerHTML = "<h3>The Reunion Has Begun! 🎉</h3>";
             }
+        }, 1000);
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            daysEl.textContent = pad(days);
-            hoursEl.textContent = pad(hours);
-            minutesEl.textContent = pad(minutes);
-            secondsEl.textContent = pad(seconds);
-
-            const daysWord = days === 1 ? 'day' : 'days';
-            messageEl.textContent = `Event starts in ${days} ${daysWord}, ${hours} hours.`;
-        }
-
-        const timerInterval = setInterval(updateCountdown, 1000);
-        updateCountdown(); // initial call
-
-        // --- Sign-up Handling (localStorage) ---
-        const SIGNUPS_KEY = 'wynneSignups';
-
-        function loadSignups() {
-            try {
-                const raw = localStorage.getItem(SIGNUPS_KEY);
-                return raw ? JSON.parse(raw) : [];
-            } catch (e) {
-                console.error('Failed to load signups', e);
-                return [];
-            }
-        }
-
-        function saveSignups(list) {
-            try {
-                localStorage.setItem(SIGNUPS_KEY, JSON.stringify(list));
-            } catch (e) {
-                console.error('Failed to save signups', e);
-            }
-        }
-
-        function renderSignups() {
-            const list = loadSignups();
-            const container = document.getElementById('signup-list');
-            container.innerHTML = '';
-            if (list.length === 0) {
-                container.innerHTML = '<p class="muted">No signups yet — be the first!</p>';
-                return;
-            }
-            list.forEach((s, idx) => {
-                const div = document.createElement('div');
-                div.className = 'signup-item';
-                div.innerHTML = `<strong>${escapeHtml(s.name)}</strong> — ${s.guests} guest(s) — ${escapeHtml(s.bringing)}`;
-                container.appendChild(div);
-            });
-        }
-
-        function handleSignUp(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const guests = parseInt(document.getElementById('guests').value, 10) || 1;
-            const bringing = document.getElementById('bringing').value;
-
-            if (!name) {
-                alert('Please enter your name.');
-                return;
-            }
-
-            const list = loadSignups();
-            list.push({ name, guests, bringing, createdAt: new Date().toISOString() });
-            saveSignups(list);
-            renderSignups();
-
-            // feedback & reset
-            alert('Thanks — your RSVP has been recorded!');
-            event.target.reset();
-            document.getElementById('guests').value = 1;
-        }
-
-        // Basic HTML escaping for rendering user input
-        function escapeHtml(str) {
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#039;');
-        }
-
-        // Load initial signups on page load
-        renderSignups();
-
-        // --- Photo Preview & Drag/Drop ---
-        const photoInput = document.getElementById('photo-input');
-        const gallery = document.getElementById('gallery-preview');
-        const uploadZone = document.getElementById('upload-zone');
-
-        function clearGallery() {
-            gallery.innerHTML = '';
-        }
-
-        function previewFiles(fileList) {
-            const files = Array.from(fileList).filter(f => f.type && f.type.startsWith('image/'));
-            if (files.length === 0) return;
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.alt = file.name;
-                    gallery.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            });
-        }
-
-        // wire up click to open file dialog
-        uploadZone.addEventListener('click', () => photoInput.click());
-        photoInput.addEventListener('change', (e) => {
-            previewFiles(e.target.files);
-            // keep file input value so the same file can be chosen again if needed
-            photoInput.value = '';
-        });
-
-        // drag/drop
-        ['dragenter', 'dragover'].forEach(ev => {
-            uploadZone.addEventListener(ev, (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                uploadZone.classList.add('dragover');
-            });
-        });
-
-        ['dragleave', 'dragend', 'drop'].forEach(ev => {
-            uploadZone.addEventListener(ev, (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                uploadZone.classList.remove('dragover');
-            });
-        });
-
-        uploadZone.addEventListener('drop', (e) => {
-            const dt = e.dataTransfer;
-            if (dt && dt.files && dt.files.length) {
-                previewFiles(dt.files);
+        // Simulated RSVP Form Processing
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('guestName');
+            const countInput = document.getElementById('guestCount');
+            
+            if(nameInput.value.trim() !== "") {
+                const newGuest = document.createElement('span');
+                newGuest.className = 'guest-tag';
+                newGuest.innerText = `${nameInput.value} (${countInput.value})`;
+                
+                document.getElementById('rsvpList').appendChild(newGuest);
+                
+                // Reset form
+                nameInput.value = "";
+                countInput.value = "1";
             }
         });
 
-        // keyboard accessibility: Enter or Space activates file dialog
-        uploadZone.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                photoInput.click();
+        // Simulated Activity Sign-Up Processing
+        document.getElementById('activityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const activityInput = document.getElementById('activityName');
+            const participantInput = document.getElementById('participantName');
+
+            if (participantInput.value.trim() !== "") {
+                const activityItem = document.createElement('span');
+                activityItem.className = 'activity-tag';
+                activityItem.innerText = `${participantInput.value} → ${activityInput.value}`;
+
+                document.getElementById('activityList').appendChild(activityItem);
+
+                participantInput.value = "";
+                activityInput.value = "";
             }
         });
 
-        // optional: persist previews in-memory only while page remains open (no uploads are performed)
-        // IMPORTANT: this demo stores nothing on the server — photos are only displayed locally as data URLs.
-
+        // Simulated Local Photo Upload Preview
+        function previewPhoto(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const img = document.createElement('img');
+                img.src = reader.result;
+                // Give it a playful random rotation like a real scrapbook
+                const randomRotation = Math.floor(Math.random() * 10) - 5;
+                img.style.setProperty('--r', randomRotation);
+                
+                document.getElementById('gallery').appendChild(img);
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
     </script>
 </body>
 </html>
+```
