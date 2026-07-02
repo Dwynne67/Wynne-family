@@ -337,14 +337,6 @@
                         <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?auto=format&fit=crop&w=150&q=80" style="--r: 4">
                     </div>
                 </div>
-
-                <div class="card activity-card">
-                    <h2><a href="https://docs.google.com/forms/d/e/1FAIpQLSdLsaclzSjfQWIJL-O9a6lymBlpJss3Y-MCP2DlbJarw-4F1g/viewform?usp=publish-editor" target="_blank" rel="noopener">Activity Sign-Up</a></h2>
-                    <p>Sign up for activities using the Google Form linked below:</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdLsaclzSjfQWIJL-O9a6lymBlpJss3Y-MCP2DlbJarw-4F1g/viewform?usp=publish-editor" target="_blank" rel="noopener" class="map-btn">📝 Open Activity Sign-Up Form</a>
-                    <h3>Signed Up So Far:</h3>
-                    <div class="activity-list" id="activityList"></div>
-                </div>
             </div>
 
         </div>
