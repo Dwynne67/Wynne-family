@@ -291,7 +291,7 @@
                 
                 <!-- RSVP Section -->
                 <div class="card" style="margin-bottom: 2rem;">
-                    <h2>RSVP Sign-Up</h2>
+                    <h2>Sign-Up</h2>
                     <form id="rsvpForm">
                         <label for="guestName">Your Name(s):</label>
                         <input type="text" id="guestName" placeholder="e.g., Uncle Bob & Aunt Sue" required>
