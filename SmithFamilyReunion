@@ -318,7 +318,7 @@ Here is the full index.html code:
                 <!-- Location / Map Section -->
                 <div class="card map-link-card">
                     <h2>Reunion Grounds</h2>
-                    <p>We're setting up the tents and stoking the grills! View our exact location and get directions here:</p>
+                    <p>View our exact location and get directions here:</p>
                     <a href="https://maps.app.goo.gl/4jY31GRJw6uv2RtR6" target="_blank" class="map-btn">📍 Open Map Location</a>
                 </div>
 
