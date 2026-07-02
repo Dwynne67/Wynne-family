@@ -1,1 +1,444 @@
+Here is the full index.html code:
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Smith Family Reunion</title>
+    <style>
+        /* Country Style Palette & Typography */
+        @import url('https://fonts.googleapis.com/css2?family=Cherry+Cream+Soda&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap');
+
+        :root {
+            --barn-red: #8B263E;
+            --header-blue: #2B7BE4;
+            --countdown-blue: #C0C0C0;
+            --warm-cream: #FDFBF7;
+            --burlap-brown: #D4C5B9;
+            --dark-wood: #4A3525;
+            --forest-green: #3B5249;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--warm-cream);
+            color: var(--dark-wood);
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(rgba(74, 53, 37, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        header {
+            background-color: var(--header-blue);
+            color: var(--warm-cream);
+            text-align: center;
+            padding: 3rem 1rem;
+            border-bottom: 8px double var(--dark-wood);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-family: 'Cherry Cream Soda', cursive;
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px var(--dark-wood);
+        }
+
+        header p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            margin: 0.5rem 0 0 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* Card Styling */
+        .card {
+            background: #ffffff;
+            border: 2px solid var(--burlap-brown);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .activity-card {
+            background: #f2f2f2;
+            border-color: #4a4a4a;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px dashed var(--burlap-brown);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--barn-red);
+            border-bottom: 2px dashed var(--burlap-brown);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        /* Countdown Timer */
+        #countdown-box {
+            text-align: center;
+            background: var(--countdown-blue);
+            color: var(--warm-cream);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        #countdown-box h3 {
+            margin: 0 0 1rem 0;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+
+        #timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .time-part {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .time-part span:first-child {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            font-family: 'Cherry Cream Soda', cursive;
+        }
+
+        /* Forms & Interactive elements */
+        input, select, button {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0 1.2rem 0;
+            border: 1px solid var(--burlap-brown);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        button {
+            background-color: var(--forest-green);
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background-color: #2b3d36;
+        }
+
+        /* RSVP List */
+        .rsvp-list {
+            margin-top: 1.5rem;
+            max-height: 250px;
+            overflow-y: auto;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .guest-tag {
+            display: inline-block;
+            background: var(--burlap-brown);
+            color: var(--dark-wood);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Photo Gallery Frame */
+        .upload-zone {
+            border: 3px dashed var(--burlap-brown);
+            padding: 2rem;
+            text-align: center;
+            background: var(--warm-cream);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .activity-list {
+            margin-top: 1rem;
+            max-height: 180px;
+            overflow-y: auto;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .activity-tag {
+            display: block;
+            background: #eef6ff;
+            color: #1a3b70;
+            padding: 0.65rem 0.9rem;
+            border-radius: 12px;
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            transform: rotate(calc(var(--r, 0) * 1deg));
+        }
+
+        /* Map Card style */
+        .map-link-card {
+            text-align: center;
+            background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1524813686514-a57563d77d61?auto=format&fit=crop&w=400&q=80');
+            background-size: cover;
+        }
+        
+        .map-btn {
+            display: inline-block;
+            background-color: #2B7BE4;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+            box-shadow: 0 4px var(--dark-wood);
+            transition: background 0.2s ease;
+        }
+        .map-btn:hover {
+            background-color: #1d63c0;
+        }
+        .map-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px var(--dark-wood);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--dark-wood);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Smith Family Reunion</h1>
+        <p>Gathering together, making memories</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Countdown Timer -->
+        <div id="countdown-box">
+            <h3>Time Left Until the Fun and Singing begins!</h3>
+            <div id="timer">
+                <div class="time-part"><span id="days">00</span><span>Days</span></div>
+                <div class="time-part"><span id="hours">00</span><span>Hours</span></div>
+                <div class="time-part"><span id="minutes">00</span><span>Mins</span></div>
+                <div class="time-part"><span id="seconds">00</span><span>Secs</span></div>
+            </div>
+        </div>
+
+        <div class="grid">
+            
+            <!-- Left Column: RSVP and Map -->
+            <div class="left-col">
+                
+                <!-- RSVP Section -->
+                <div class="card" style="margin-bottom: 2rem;">
+                    <h2>RSVP Sign-Up</h2>
+                    <form id="rsvpForm">
+                        <label for="guestName">Your Name(s):</label>
+                        <input type="text" id="guestName" placeholder="e.g., Uncle Bob & Aunt Sue" required>
+                        
+                        <label for="guestCount">How many in your party?</label>
+                        <select id="guestCount">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5+">5+ </option>
+                        </select>
+                        
+                        <button type="submit">Count Us In!</button>
+                    </form>
+
+                    <h3>Who's Coming So Far:</h3>
+                    <div class="rsvp-list" id="rsvpList"></div>
+                </div>
+
+                <!-- Location / Map Section -->
+                <div class="card map-link-card">
+                    <h2>Reunion Grounds</h2>
+                    <p>We're setting up the tents and stoking the grills! View our exact location and get directions here:</p>
+                    <a href="https://maps.app.goo.gl/4jY31GRJw6uv2RtR6" target="_blank" class="map-btn">📍 Open Map Location</a>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Photo Upload -->
+            <div class="right-col">
+                <div class="card" style="height: calc(100% - 4rem);">
+                    <h2>Family Scrapbook</h2>
+                    <p>Share your favorite memories or throwbacks leading up to the big day!</p>
+                    
+                    <div class="upload-zone" onclick="window.open('https://photos.app.goo.gl/tYFgSS7VXsfEtD7bA','_blank')">
+                        <p>📸 Click to share a family photo (opens Google Photos)</p>
+                    </div>
+
+                    <div class="gallery" id="gallery">
+                        <!-- Placeholder country imagery -->
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=150&q=80" style="--r: -3">
+                        <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?auto=format&fit=crop&w=150&q=80" style="--r: 4">
+                    </div>
+                </div>
+
+                <div class="card activity-card">
+                    <h2>Activity Sign-Up</h2>
+                    <p>Type in an activity you want to join, then add your name.</p>
+                    <form id="activityForm">
+                        <label for="activityName">Activity</label>
+                        <input type="text" id="activityName" placeholder="e.g., Campfire Storytelling" required>
+                        <label for="participantName">Your Name</label>
+                        <input type="text" id="participantName" placeholder="e.g., Aunt May" required>
+                        <button type="submit">Join Activity</button>
+                    </form>
+                    <h3>Signed Up So Far:</h3>
+                    <div class="activity-list" id="activityList"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>The Smith Family Reunion © 2026 • See you there! </p>
+    </footer>
+
+    <script>
+        // Countdown Timer Logic
+        const targetDate = new Date("July 9, 2026 15:00:00").getTime();
+
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+
+            if (difference < 0) {
+                clearInterval(timerInterval);
+                document.getElementById("countdown-box").innerHTML = "<h3>The Reunion Has Begun! 🎉</h3>";
+            }
+        }, 1000);
+
+        // Simulated RSVP Form Processing
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('guestName');
+            const countInput = document.getElementById('guestCount');
+            
+            if(nameInput.value.trim() !== "") {
+                const newGuest = document.createElement('span');
+                newGuest.className = 'guest-tag';
+                newGuest.innerText = `${nameInput.value} (${countInput.value})`;
+                
+                document.getElementById('rsvpList').appendChild(newGuest);
+                
+                // Reset form
+                nameInput.value = "";
+                countInput.value = "1";
+            }
+        });
+
+        // Simulated Activity Sign-Up Processing
+        document.getElementById('activityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const activityInput = document.getElementById('activityName');
+            const participantInput = document.getElementById('participantName');
+
+            if (participantInput.value.trim() !== "") {
+                const activityItem = document.createElement('span');
+                activityItem.className = 'activity-tag';
+                activityItem.innerText = `${participantInput.value} → ${activityInput.value}`;
+
+                document.getElementById('activityList').appendChild(activityItem);
+
+                participantInput.value = "";
+                activityInput.value = "";
+            }
+        });
+
+        // Simulated Local Photo Upload Preview
+        function previewPhoto(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const img = document.createElement('img');
+                img.src = reader.result;
+                // Give it a playful random rotation like a real scrapbook
+                const randomRotation = Math.floor(Math.random() * 10) - 5;
+                img.style.setProperty('--r', randomRotation);
+                
+                document.getElementById('gallery').appendChild(img);
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>
+```
