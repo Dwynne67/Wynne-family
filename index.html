@@ -344,13 +344,6 @@
                         <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?auto=format&fit=crop&w=150&q=80" style="--r: 4">
                     </div>
                 </div>
-
-                <div class="card activity-card">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdLsaclzSjfQWIJL-O9a6lymBlpJss3Y-MCP2DlbJarw-4F1g/viewform?usp=publish-editor" target="_blank" style="text-decoration: none;">
-                        <h2 style="cursor: pointer;">Activity Sign-Up</h2>
-                    </a>
-                    <p>Sign up for activities using the form above!</p>
-                </div>
             </div>
 
         </div>
@@ -383,24 +376,6 @@
                 document.getElementById("countdown-box").innerHTML = "<h3>The Reunion Has Begun! 🎉</h3>";
             }
         }, 1000);
-
-        // Simulated Activity Sign-Up Processing
-        document.getElementById('activityForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const activityInput = document.getElementById('activityName');
-            const participantInput = document.getElementById('participantName');
-
-            if (participantInput.value.trim() !== "") {
-                const activityItem = document.createElement('span');
-                activityItem.className = 'activity-tag';
-                activityItem.innerText = `${participantInput.value} → ${activityInput.value}`;
-
-                document.getElementById('activityList').appendChild(activityItem);
-
-                participantInput.value = "";
-                activityInput.value = "";
-            }
-        });
 
         // Simulated Local Photo Upload Preview
         function previewPhoto(event) {
